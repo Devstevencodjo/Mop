@@ -1,0 +1,62 @@
+<p>room works!</p>
+<div class="main-container">
+    <h1>Welcome to {{hotelName}}</h1>
+
+    <section class="room-summary">
+        <h2>Nombre de chambres</h2>
+        <div [hidden]="hideRooms" class="ch">
+            <p>Disponible : <strong>{{rooms.availableRooms}}</strong></p>
+            <p>Réservées : <strong>{{rooms.bookedRooms}}</strong></p>
+            <p>Total : <strong>{{rooms.totalRooms}}</strong></p>
+        </div>
+        <button (click)="toggle()">Afficher/Masquer</button>
+    </section>
+
+    <section class="room-list">
+        <h2>Nos chambres</h2>
+        <div *ngFor="let room of roomList" class="card">
+            <img [src]="room.photos" alt="appart" class="room-photo">
+            <div class="co">
+                <span class="info">Numéro : <strong>{{room.roomNumber}}</strong></span>
+                <span class="info">Type : {{room.roomType}}</span>
+                <span class="info">Équipements : {{room.amenities}}</span>
+                <span class="info">Prix : <strong>{{room.price}} €</strong></span>
+                <span class="info">Arrivée : {{room.checkinTime | date:'dd/MM/yyyy'}}</span>
+                <span class="info">Départ : {{room.checkoutTime | date:'dd/MM/yyyy'}}</span>
+            </div>
+        </div>
+    </section>
+</div>
+
+<br><br>
+
+
+<table>
+
+    <tr>
+        <th>Index</th>
+        <th>Even/Odd</th>
+        <th>Room Number</th>
+        <th>Room Type</th>
+        <th>Amenities</th>
+        <th>Price</th>
+        <th>Check-in</th>
+        <th>Check-out</th>
+        <th>Rate</th>
+    </tr>
+
+    <tr 
+    [ngClass]="(i + 1) % 2 === 0 ? 'even' : 'odd'"
+    *ngFor="let room of roomList; let i = index">
+        <td> {{i + 1}} </td>
+        <td> {{ (i + 1) % 2 === 0 ? 'Even' : 'Odd' }} </td>
+        <td>{{ room.roomNumber }}</td>
+        <td>{{ room.roomType }}</td>
+        <td>{{ room.amenities }}</td>
+        <td>{{ room.price | currency:'USD' }}</td>
+        <td>{{ room.checkinTime | date:'dd/MM/yyyy' }}</td>
+        <td>{{ room.checkoutTime | date:'dd/MM/yyyy' }}</td>
+        <td>{{ room.rate | number : '1.0' }}</td>
+    </tr>
+
+</table>

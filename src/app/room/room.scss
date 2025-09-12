@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:host {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+}
+
+h2 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin: 25px 0 15px;
+}
+
+.room-summary {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  .ch {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 15px 0;
+    
+    p {
+      margin: 10px 0;
+      font-size: 1.1rem;
+      
+      strong {
+        color: #2980b9;
+        font-size: 1.3rem;
+      }
+    }
+  }
+  
+  button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto;
+    
+    &:hover {
+      background-color: #2980b9;
+    }
+  }
+}
+
+.room-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  .card {
+    display: flex;
+    flex-direction: row; // Assurez-vous que la direction est bien en row
+    background-color: white;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+    transition: transform 0.3s;
+    min-height: 220px;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+    
+    .room-photo {
+      width: 250px;
+      height: 200px; // Hauteur fixe pour éviter des problèmes de mise en page
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    
+    .co {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow: visible;
+      justify-content: center; // Centre verticalement le contenu
+      
+      .info {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 5px;
+        display: block;
+        
+        strong {
+          color: #2980b9;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  th {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 500;
+  }
+  
+  td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr.even {
+    background-color: #f2f2f2;
+  }
+  
+  tr.odd {
+    background-color: white;
+  }
+  
+  tr:hover {
+    background-color: #e6f7ff;
+  }
+}
+
+@media (max-width: 768px) {
+  .room-list .card {
+    flex-direction: column; // Change to column ONLY on small screens
+    
+    .room-photo {
+      width: 100%;
+      height: 200px;
+    }
+    
+    .co {
+      width: 100%; // Assurez-vous que la section info prend toute la largeur en vue mobile
+    }
+  }
+  
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+// Ajoutez cette règle pour les écrans moyens
+@media (min-width: 769px) and (max-width: 1023px) {
+  .room-list .card {
+    flex-direction: row; // Force row layout on medium screens
+    
+    .room-photo {
+      width: 200px; // Reduce image width on medium screens
+    }
+  }
+}
